@@ -13,6 +13,69 @@
         <p>@CustomHelpers.DisplayWithLinksFor(Model.Classroom.description)</p>
     </div>
 </div>
+<style>
+
+    .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
+        outline: thin dotted;
+        outline-offset: -2px;
+    }
+
+    .test:focus {
+        outline: none !important;
+        border-color: transparent !important;
+    }
+
+    .btn-custom {
+        color: #000;
+        background-color: #f8f9fa;
+    }
+
+        .btn-custom:hover {
+            color: #fff;
+            background-color: #5a9191;
+        }
+
+        .btn-custom:focus, .btn-custom.focus {
+            color: #fff;
+            background-color: #5a9191;
+        }
+
+    body .btn {
+        outline: 0;
+    }
+
+    .btn.active.focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn.focus:active,
+    .btn:active:focus,
+    .btn:focus {
+        outline: 0;
+        outline-offset: 0;
+        background-image: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .light-grey-display {
+        background-color: #eeeeee !important;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .custom-sticky {
+        position: fixed;
+        top: 0;
+    }
+
+    .T4tcpe {
+        color: white;
+        left: 20px;
+        bottom: auto;
+        padding: 1rem 1.5rem;
+        position: absolute;
+    }
+</style>
 
 <script>
     // List of random image URLs
