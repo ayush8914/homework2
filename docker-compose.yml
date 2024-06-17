@@ -1,8 +1,16 @@
 version: '3.4'
 
+networks:
+  homework:
+   driver: bridge
+
 services:
   homework2:
     image: ${DOCKER_REGISTRY-}homework2
     build:
       context: .
       dockerfile: Homework2/Dockerfile
+    ports: 
+    - "8001:80"
+    networks:
+      - homework
