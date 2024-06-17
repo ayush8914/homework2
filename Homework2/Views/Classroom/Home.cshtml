@@ -1,0 +1,157 @@
+﻿@model Homework2.ViewModels.ClassroomHomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+    ViewData["ClassId"] = Model.Classroom.ID;
+}
+<link href="~/css/classroomhome.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<div id="randomImageContainer" class="random-image-container">
+    <div class="T4tcpe">
+        <h2>@Html.DisplayFor(model => model.Classroom.title)</h2>
+        <p>@CustomHelpers.DisplayWithLinksFor(Model.Classroom.description)</p>
+    </div>
+</div>
+
+<script>
+    // List of random image URLs
+    var imageList = [
+        'https://gstatic.com/classroom/themes/img_backtoschool.jpg',
+        'https://gstatic.com/classroom/themes/img_breakfast.jpg',
+        'https://gstatic.com/classroom/themes/img_learnlanguage.jpg',
+        'https://gstatic.com/classroom/themes/Honors.jpg',
+        'https://gstatic.com/classroom/themes/img_code.jpg',
+        'https://gstatic.com/classroom/themes/img_read.jpg',
+        'https://gstatic.com/classroom/themes/Physics.jpg',
+    ];
+
+    // Function to set a random background image
+    function setRandomBackgroundImage() {
+        var randomIndex = Math.floor(Math.random() * imageList.length);
+        var randomImageURL = imageList[randomIndex];
+        var randomImageContainer = document.getElementById('randomImageContainer');
+        randomImageContainer.style.backgroundImage = 'url(' + randomImageURL + ')';
+    }
+
+    // Call the function to set a random image when the page loads
+    setRandomBackgroundImage();
+</script>
+
+<div class="row">
+    <div class="col-md-2 col-12">
+        <nav class="d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Room</span>
+                </h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <button class="nav-link btn test btn-custom" id="ViewBoard">
+                            Announcement
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link btn test btn-custom" id="ViewAssignments">
+                            Assignments
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link btn test btn-custom" id="ViewPeople">
+                            People
+                        </button>
+                    </li>
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Settings</span>
+                </h6>
+
+                <ul class="nav flex-column mb-2">
+                    @if (Model.ClassroomUserRole == "Mentor")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Edit" asp-route-id="@Model.Classroom.ID">
+                                Edit Class
+                            </a>
+                        </li>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" asp-for="@Model.Classroom.ID" />
+                            <input type="submit" value="Delete" class="btn btn-danger" style="background-color: #5a9191; border-color: #5a9191; color: white" />
+                        </form>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" data-toggle="modal" data-target="#LeaveModal">
+                                Leave Class
+                            </a>
+                        </li>
+                        <div class="modal fade" id="LeaveModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="background-color: #5a9191; border-color: #5a9191; color: white">Hold Up!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <partial name="_LeaveClassroom" view-data="ViewData" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-10 col-12 mt-3">
+        <div id="BlackBoard">
+            <partial name="_BlackBoardIndexPartial" view-data="ViewData" />
+        </div>
+        <div id="Assignments">
+            <partial name="_AssignmentPartial" view-data="ViewData" />
+        </div>
+        <div id="People">
+            <partial name="_PeoplePartial" view-data="ViewData" />
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onscroll = function () { myFunction() };
+    var header = document.getElementsByClassName("sidebar")[0];
+    var sticky = header.offsetTop;
+    function myFunction() {
+        if (window.pageYOffset > 190) {
+            header.classList.add("custom-sticky");
+        } else {
+            header.classList.remove("custom-sticky");
+        }
+    }
+    $(document).ready(function () {
+        $("#BlackBoard").hide();
+        $("#People").hide();
+        $("#Assignments").hide();
+        $("#@ViewBag.loadPartial").show();
+        $("#ViewBoard").click(function () {
+            $("#BlackBoard").show();
+            $("#People").hide();
+            $("#Assignments").hide();
+        });
+        $("#ViewAssignments").click(function () {
+            $("#BlackBoard").hide();
+            $("#People").hide();
+            $("#Assignments").show();
+        });
+        $("#ViewPeople").click(function () {
+            $("#BlackBoard").hide();
+            $("#People").show();
+            $("#Assignments").hide();
+        });
+    });
+</script>
+
+

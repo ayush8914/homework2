@@ -1,0 +1,110 @@
+﻿@model Homework2.ViewModels.HomeViewModel
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager
+<h3>Your classrooms</h3>
+@if (Model.UserClassrooms.Count() == 0)
+{
+    <span class="text-muted">You aren't enrolled in any classroom currently. Check notifications for invites or Create a classroom right now!</span>
+    <br />
+}
+<br />
+
+@foreach (ClassroomUsers classUser in Model.UserClassrooms)
+{
+
+    //we have fetch the  AppUser data  to show the  mentor of class
+    AppUser user = await _userManager.FindByIdAsync(classUser.Classroom.AppUserID);
+
+    <div class="card text-dark mr-4 mb-4">
+        <div id="randomImageContainer" style="background-image:url(https://gstatic.com/classroom/themes/img_reachout.jpg); background-repeat:no-repeat; background-size:cover; height:150px; border-radius: 3px; border:solid; border-color:gray;">
+            <div class="T4tcpe">
+                <div style="color: white; margin-top:119px;">Class created by <b>@user</b></div>
+            </div>
+        </div>
+
+        <script>
+            // List of random image URLs
+            var imageList = [
+                'https://gstatic.com/classroom/themes/img_backtoschool.jpg',
+                'https://gstatic.com/classroom/themes/img_breakfast.jpg',
+                'https://gstatic.com/classroom/themes/img_learnlanguage.jpg',
+                'https://gstatic.com/classroom/themes/Honors.jpg',
+                'https://gstatic.com/classroom/themes/img_code.jpg',
+                'https://gstatic.com/classroom/themes/img_read.jpg',
+                'https://gstatic.com/classroom/themes/Physics.jpg',
+            ];
+
+            // Function to set a random background image
+            function setRandomBackgroundImage() {
+                var randomIndex = Math.floor(Math.random() * imageList.length);
+                var randomImageURL = imageList[randomIndex];
+                var randomImageContainer = document.getElementById('randomImageContainer');
+                randomImageContainer.style.backgroundImage = 'url(' + randomImageURL + ')';
+            }
+
+            // Call the function to set a random image when the page loads
+            setRandomBackgroundImage();
+        </script>
+
+
+
+        <div class="card-body">
+            <h5 class="card-title">@classUser.Classroom.title</h5>
+            @CustomHelpers.DisplayWithLinksFor(classUser.Classroom.description)
+            <span class="text-secondary" style="color: #afb2b5;">You're a <b>@classUser.Role</b> in this classroom</span>
+        </div>
+
+
+        <!--go to class button -->
+        <div class="card-body" style="border-top: 2px solid #8e8e8c;">
+            <a class="card-link text-light" asp-controller="Classroom" asp-action="Home" asp-route-id="@classUser.ClassroomId" asp-route-loadPartial="BlackBoard">
+                <i class="fa-solid fa-door-open"></i> Go to Class
+            </a>
+        </div>
+    </div>
+}
+
+<style>
+    .card {
+        padding: -10px;
+        background-color: #e8eaed;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+    .card-header {
+        background-color: #5a9191;
+        color: black;
+        font-weight: bold;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .text-secondary {
+        color: #afb2b5;
+    }
+
+    .card-link {
+        background-color: #5a9191;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        text-decoration: none;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+        .card-link:hover {
+            background-color: #5a9191;
+        }
+
+    .card-body {
+        background-color: #f5f7f5;
+    }
+</style>

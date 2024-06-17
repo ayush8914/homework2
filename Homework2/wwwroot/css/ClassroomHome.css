@@ -1,0 +1,118 @@
+﻿
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
+    outline: thin dotted;
+    outline-offset: -2px;
+}
+
+.test:focus {
+    outline: none !important;
+    border-color: transparent !important;
+}
+
+.btn-custom {
+    color: #000;
+    background-color: #f8f9fa;
+}
+
+    .btn-custom:hover {
+        color: #fff;
+        background-color: #5a9191;
+    }
+
+    .btn-custom:focus, .btn-custom.focus {
+        color: #fff;
+        background-color: #5a9191;
+    }
+
+body .btn {
+    outline: 0;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+    outline: 0;
+    outline-offset: 0;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.light-grey-display {
+    background-color: #eeeeee !important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.custom-sticky {
+    position: fixed;
+    top: 0;
+}
+
+.T4tcpe {
+    color: white;
+    left: 20px;
+    bottom: auto;
+    padding: 1rem 1.5rem;
+position: absolute;
+    
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    .random-image-container {
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .T4tcpe {
+        position: static;
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .random-image-container {
+        margin-left: 0;
+        width: 100%;
+        height: 250px;
+        background-size: cover;
+        border-radius: 10px;
+        text-align: left;
+    }
+
+    .T4tcpe {
+        color: white;
+        left: 390px;
+        margin-top: 135px;
+        padding: 1rem 1.5rem;
+        position: absolute;
+        right: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .random-image-container {
+        margin-left: 195px;
+        width: 900px;
+        height: 250px;
+        background-size: cover;
+        border-radius: 10px;
+        text-align: left;
+    }
+
+    .T4tcpe {
+        left: 390px;
+        margin-top: 135px;
+        padding: 1rem 1.5rem;
+        position: absolute;
+        right: 0;
+    }
+}

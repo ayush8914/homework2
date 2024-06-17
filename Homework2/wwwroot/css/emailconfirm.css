@@ -1,0 +1,25 @@
+﻿.container {
+        max-width: 900px;
+    }
+
+.card-header {
+    background: linear-gradient(45deg, #36D1DC, #5B86E5);
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    padding: 1.5rem;
+}
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            margin: 0 10px;
+        }
+    }

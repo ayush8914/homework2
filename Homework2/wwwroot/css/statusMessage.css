@@ -1,0 +1,15 @@
+﻿.alert {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    align-content : center;
+}
+
+
+@media (max-width: 768px) {
+    .alert {
+        font-size: 0.9rem;
+    }
+}

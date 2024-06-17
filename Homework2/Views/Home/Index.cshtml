@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@model Homework2.ViewModels.HomeViewModel
+
+<style>
+    .center-container {
+        margin-top: 1px;
+        margin-bottom: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh; /* Center vertically in the viewport */
+    }
+
+
+    .custom-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 5px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+    }
+
+        .custom-card:hover {
+            background-color: #f2f2f2; /* Change the background color on hover */
+        }
+
+    .light-grey-box {
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .carousel-container {
+        margin-top: 1px;
+        margin-bottom: 1px;
+        width: 1000px; /* Set your desired width */
+        height: 300px; /* Set your desired height */
+        overflow: hidden;
+    }
+
+    .carousel-image {
+        padding: 7px;
+        width: 90%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="light-grey-box">
+                <partial name="_NotificationsPartial" />
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <partial name="_UserClassroomsPartial" />
+        </div>
+
+    </div>
+}
+else
+{
+    <link href="~/css/homepage.css" rel="stylesheet" />
+    <div class="KUqHO FAtkpf UrFp8e">
+        <div class="Lqr2e" style="background-image: url(&quot;https://www.gstatic.com/classroom/empty_states_home.svg&quot;);"></div><h2 class="tLDEHd">
+            <p class="asQXV">Add a class to get started</p>
+            <div jsaction="rcuQ6b:npT2md;JIbuQc:Ckgp2b(Qx7uuf),dr4lkd(vAJl2)" jscontroller="RFXpNd">
+            </div>
+        </h2>
+        <div class="hcjKL EvT0id">
+            <img src="https://www.gstatic.com/classroom/web/home/dark_create_class_arrow.svg" class="GqugBc" aria-label="Don't see your classes? Try another account" data-iml="9169.60000000149"><p class="nt2KVb asQXV">Don't see your classes? Try another account</p>
+        </div>
+    </div>
+}

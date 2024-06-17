@@ -1,0 +1,54 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Sign in";
+}
+<link href="~/css/registerpage.css" rel="stylesheet" />
+<h3 style="justify-content:center; align-items:center; display:flex; color: rgb(30, 142, 62);">@ViewData["Title"]</h3>
+<div class="row" style="display:flex; justify-content:center; ">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.UserName">Username</label>
+                    <input asp-for="Input.UserName" class="form-control form-control-sm />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control form-control-sm" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-top:10px;">
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top:10px; display:flex; col-mb-4">
+                    
+                    <button type="submit" class="btn btn-primary" style="background-color:  rgb(30, 142, 62); border-color: #5a9191; color: white; ">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color: rgb(30, 142, 62);">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword" style="color: rgb(30, 142, 62);">Forgot your password?</a>
+                    </p>
+                   
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

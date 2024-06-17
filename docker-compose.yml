@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  homework2:
+    image: ${DOCKER_REGISTRY-}homework2
+    build:
+      context: .
+      dockerfile: Homework2/Dockerfile
