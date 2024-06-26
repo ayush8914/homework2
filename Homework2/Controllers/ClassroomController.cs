@@ -190,18 +190,35 @@ namespace Homework2.Controllers
             
                 string filename = null;
                 List<string> files = new List<string>();
-                if (model.BlackBoardViewModel.Files != null)
-                {
-                    foreach (IFormFile file in model.BlackBoardViewModel.Files)
+            if (model.BlackBoardViewModel.Files != null)
+            {   
+                foreach (IFormFile file in model.BlackBoardViewModel.Files)
+                {  
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "blackboard");
+                    // Create directory if it doesn't exist
+                    if (!Directory.Exists(uploadsFolder))
                     {
-                        string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "blackboard");
-                        filename = Guid.NewGuid().ToString() + "_" + file.FileName;
-                        files.Add(filename);
-                        string filePath = Path.Combine(uploadsFolder, filename);
-                        file.CopyTo(new FileStream(filePath, FileMode.Create));
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+                    filename = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    files.Add(filename);
+                    string filePath = Path.Combine(uploadsFolder, filename);
+                    try
+                    {
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            file.CopyTo(fileStream);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log exception or handle it as needed
+                        Console.WriteLine(ex.Message);
                     }
                 }
-                BlackBoard newBoard = new BlackBoard
+            }
+
+            BlackBoard newBoard = new BlackBoard
                 {
                     ClassroomId = Convert.ToInt32(model.BlackBoardViewModel.ClassId),
                     AppUserId = Id,
@@ -327,10 +344,26 @@ namespace Homework2.Controllers
                     foreach (IFormFile file in model.AssignmentViewModel.Files)
                     {
                         string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "posted_assignments");
-                        filename = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+                    filename = Guid.NewGuid().ToString() + "_" + file.FileName;
                         files.Add(filename);
                         string filePath = Path.Combine(uploadsFolder, filename);
-                         file.CopyTo(new FileStream(filePath, FileMode.Create));
+                    try
+                    {
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            file.CopyTo(fileStream);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log exception or handle it as needed
+                        Console.WriteLine(ex.Message);
+                    }
+             
                     }
                 }
                 Assignment newAssignment = new Assignment
@@ -389,11 +422,26 @@ namespace Homework2.Controllers
                     foreach (IFormFile file in model.Files)
                     {
                         string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "submitted_assignments");
-                        filename = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+                    filename = Guid.NewGuid().ToString() + "_" + file.FileName;
                         files.Add(filename);
                         string filePath = Path.Combine(uploadsFolder, filename);
-                        file.CopyTo(new FileStream(filePath, FileMode.Create));
+                    try
+                    {
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            file.CopyTo(fileStream);
+                        }
                     }
+                    catch (Exception ex)
+                    {
+                        // Log exception or handle it as needed
+                        Console.WriteLine(ex.Message);
+                    }
+                }
                 }
                 SubmittedAssignment newAssignment = new SubmittedAssignment
                 {

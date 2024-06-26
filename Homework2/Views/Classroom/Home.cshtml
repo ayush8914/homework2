@@ -7,6 +7,8 @@
 <link href="~/css/classroomhome.css" rel="stylesheet" />
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
+
+
 <div id="randomImageContainer" class="random-image-container">
     <div class="T4tcpe">
         <h2>@Html.DisplayFor(model => model.Classroom.title)</h2>
@@ -122,6 +124,7 @@
 </div>
 
 <script>
+
     window.onscroll = function () { myFunction() };
     var header = document.getElementsByClassName("sidebar")[0];
     var sticky = header.offsetTop;
@@ -133,6 +136,7 @@
         }
     }
     $(document).ready(function () {
+
         $("#BlackBoard").hide();
         $("#People").hide();
         $("#Assignments").hide();

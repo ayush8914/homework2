@@ -19,4 +19,8 @@ RUN dotnet publish "Homework2.csproj" -c Release -o /app/publish /p:UseAppHost=f
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN chmod 777 /app/wwwroot
+RUN chmod 777 /app/wwwroot/blackboard
+RUN chmod 777 /app/wwwroot/posted_assignments
+RUN chmod 777 /app/wwwroot/submitted_assignments
 ENTRYPOINT ["dotnet", "Homework2.dll"]

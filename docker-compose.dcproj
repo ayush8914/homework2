@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>09c7498c-0df0-44c9-a6f3-fd826dd18401</ProjectGuid>
+    <ProjectGuid>44a9aed7-1001-4ec6-8305-9104ef0f85a6</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>homework2</DockerServiceName>

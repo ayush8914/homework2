@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lZhlboX8APq5lF+liVHaUVzGPIFol9q3kp199a9AlWc=",
+  "Hash": "FtV4HDplchmfwwsMOxky+9VCXtqqNeYD53FO5LwNmHo=",
   "Source": "Homework2",
   "BasePath": "_content/Homework2",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\blackboard\\1ccd9e5d-6959-4839-b4fe-17958f65f158_Gevariya Ayush Exp (1) (1).pdf"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Homework2\\Homework2\\wwwroot\\blackboard\\8bfeec81-0d9a-43a9-8d70-7df16cd35249_PersonalData.json",
+      "SourceId": "Homework2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Homework2\\Homework2\\wwwroot\\",
+      "BasePath": "_content/Homework2",
+      "RelativePath": "blackboard/8bfeec81-0d9a-43a9-8d70-7df16cd35249_PersonalData.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\blackboard\\8bfeec81-0d9a-43a9-8d70-7df16cd35249_PersonalData.json"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Homework2\\Homework2\\wwwroot\\css\\ClassroomHome.css",

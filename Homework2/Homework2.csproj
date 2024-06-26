@@ -20,13 +20,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="wwwroot\blackboard\" />
     <Folder Include="wwwroot\submitted_assignments\" />
-    <Folder Include="wwwroot\posted_assignments\" />
   </ItemGroup>
 
 </Project>

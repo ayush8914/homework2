@@ -74,7 +74,7 @@
                             }
                             var filePath = "~/blackboard/" + file;
                             var filename = file.Substring(file.IndexOf("_") + 1, file.Length - file.IndexOf("_") - 1);
-                            var fileUrl = "https://localhost:44300" + "/blackboard/" + file;
+                           var fileUrl = Url.Content(filePath);
                             <a target="_blank" href="@fileUrl" style="color: #5a9191;">
                                 <i class="fa-solid fa-paperclip"></i> @filename
                             </a>
